@@ -1,0 +1,465 @@
+HIBERNATE AND JPA
+
+26. ORM : 
+		It is a mapping tool . 
+		The Handler Mapping proccess the accurate request to map and it follows to the controller to access the client(browser) request.
+		
+		Structure of Hibernate ORM
+		
+		after the transctions its rollback the session and close the session
+		
+		Hibernate Architecture 
+		
+		Configuration 
+		
+		used to configure the db properties 
+		add the annoted class and mapping 
+		get ref to session factory 
+		
+		
+		
+		Session factory 
+		
+		Configure DB 
+		Manage Db
+		
+		Session 
+		
+		
+		perform crud operations, 
+		save delete, updated, get 
+		
+		
+		Configurtion --> SessionFactory --> Session
+
+
+27. main components of JPA : 
+
+			Persistance ,
+			EntityManagerFactory,
+			DB LOGIC,
+			
+			
+			
+			
+28.  a. @OneToMany -- For an example 
+
+		one applicant can many job applications
+		 
+		 in applicant (id, name , phonenumber) ------>> applications(id, job role )
+		 
+		 her the applicant(user) can apply to many job applications 
+		 
+		 @OneToMany(name = "distributorsId")
+		 List<Distributors> distributors ; 
+		 
+		 here one distributor can have many vendors
+		 
+		 
+	 b. @OneToOne for an example
+			one applicant shold have only one application and 
+			one application should have only one applicant
+			
+			@OneToOne(name = "applicamtId")
+			private String Application;
+			
+			
+	c. @ManyToOne -- for an example
+		
+		now the job applications will be that one applicant who is applied . 
+		
+		@ManyToOne
+		List<Vendors> venodors = new Vendors;
+		
+		means many venodors can have only 1 distributoir
+		 
+		 
+		 
+	d. @Entity
+
+			It is java persistance 
+			and it is used when the jpa is used
+			this entity enroutes the data from the database by using the repo 
+			
+			repo(jpa) --> entity --> DB 
+			
+			
+	e. EntityTransaction :
+	
+		here the transaction begin from the repo-> entity --> service--> controller-> jsp
+		 
+		
+		
+29. JPQL - JAVA Persistance QUERRY LANGUAGE
+			
+			JPA uses the JPQL for database logic
+			
+			
+
+30. a. to fetcg a minimum price of the product using jpa query
+
+
+
+31. java application and database using jpa
+
+	controller-->
+	
+	
+	public class Controller{
+	
+	@Autowired
+	ServiceI service;
+	
+	GetMapping(addusers)
+		public String addUsers(Model model){
+		
+		Users user  = new Users();
+		
+			user.validateAndSave(userDto);
+			model.addAttribute("user", user);
+			
+			return "addusers";
+		
+		}
+			
+	
+	}
+	
+	
+	Service --> 
+	
+	public class Service{
+		
+		@Autowired 
+		RepoI repoi
+		
+		public class ServiceImpl implements ServiceI{
+		
+			public boolean validateAndSave(UserDto userDto){
+				UserEntity userEntity  = new UserEntity;
+				boolean isvalidate = false;
+				if(userDto != null && userDto.getUserName != null && userDto.getUserName.isEmpty()){
+				
+				BeanUtils.copyProperties(userDto, userEntity);
+				
+				repo.save(userEntity);
+				
+				isvalidate = true;
+				
+					
+					
+				}
+			
+			
+			}
+		
+		}
+	
+	}
+	
+	
+	
+	
+	repo (jpa) --> 
+	
+	public class Repo{
+	
+	@Autowired
+	EntityManagerFactory entityManagerFactory;
+	
+	
+	public class RepoImpl implements RepoI{
+	
+			public void save(UserEntity userEntity){
+			
+				EntityManager entity =  entityManagerFactory.createEntityManagerFactory();
+				entity.getTranscation.begin();
+				entity.save(userEntity);
+				entity.getTranscation.commit;
+				entity.closee;
+			
+			}
+	
+	}
+	
+	
+	
+	}
+	
+	
+	
+	
+32. Step1: load and register the driver
+
+			here the load the driver using the Class.forName() method.
+			and register load the driver into the forName() method 
+			as Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			means which databse we are using that has to load and register with Driver
+			
+			
+	Step2 : Establish the connection
+			
+			3 parameters requireed to connection with the databse by using getConnection() method
+			
+			String url = "https: mysql://localhost:3306/filename"
+			String password = "pswd";
+			String userName = "root";
+			
+	
+	Step3 :  create a statement
+	
+			createStatement() method is requerid 
+			
+			connection. createStatement();
+			
+			here we have to write the queries 
+			
+			insert, select, update, delete, fetch
+			
+			
+	Step4 : excute the queries 
+		
+	Step5 : results
+	
+	Step6 : close the connections
+	
+
+
+JAVA --->	
+	
+	
+33. 	a. polymorphism 
+
+			It is defined as one form can behaves many ways according to the request.
+			
+			
+		
+		b. encapsulation 
+		
+		
+			It is the process of wrapping of all the data and the methods  into the  single unit
+		
+			for an exaample : spotify has podcast, songs(in this again catogories) and etc.. so all these are come into an one application that is spotify
+		
+		c. inheritance 
+		
+		
+			acquring the properties from parent/base/ super to child/derived/sub class 
+			
+			for an example  inheriting the facial expression, color from parents to child 
+		
+		
+		d. abstarctions
+			
+			it is the process of hidinng the data and allows the user to modify/ implements by using interface class
+			for an exaple 
+			
+			WHEN an user uses a amazon.com to order an item
+			
+			he selects the items and he add it into cart and he will buy the utem by placing an order for himself
+			
+			now in his orderspage he will gets what he is order and he donts gets other users of orders 
+			
+			means its hides the backend process and just shows whta the user need to get .
+			
+			
+		
+		
+		e. throw and throws
+		
+		
+			throw is using inside of try catch method for an exception
+			
+			thows is using method level for an exception
+			
+			
+			
+
+34.  a. equals() and  ==
+		
+		equals() it is used in method 
+		
+		== it is used to assign the value to be store in the varible 
+		
+		inside of class level
+		
+		String a ="Alice";
+		String b = new String("Alice")		
+		System.out.println(a == b);
+		
+		System.out.println(a.equals(b));
+		
+		
+		
+		b. final , finally and fianlize,
+		
+			final  keyword is used for constant and that keyword can not be changed 
+			
+			finally is used to close the connection 
+		
+		
+		
+		c. implements and extends
+		
+			implements can do only when interface class only 
+				and once class canont implements other class
+			and it is used for abstarction methods
+			
+			whereas 
+			
+			extends  using in encapsulation 
+			and its needs getter and setter methods
+			and one class can extends another class
+		
+		
+		d. checked and unchecked exceptions
+		
+		e. methods and constructors
+			methods are used to perfom a logic/task 
+			it contains method signature
+			and 2 types of methods
+			1. userdefined -- the user can change and modify the method accourding to the requiremts 
+			and 2. predefined -- inbuilt method 
+			
+		
+		f. treeMap, hashmap, linkedhashmap
+			TreeMap -- sort in a order and not allow duplicates
+			hashmap -- it contains key, values and not allow duplicates
+			
+		
+		g. @EnableWebMvc and @Configuration
+			@EnableWebMvc --> its is used for validations part when we use the @Valid in the method and to show the error which is coonected to jsp to display the errors 
+			@Configuration --> it is configure the database , properties, bean packages to scan from entity table .. (SpringConfiguration class ) 
+	
+	
+35. compile error(syntax error)
+
+
+36.
+	a= 13, b= 16.0;
+	
+	
+37. "Hello from Outer"
+
+
+38.  "Java"
+
+39. "Java Programming"
+
+40. "Hello"
+
+41. {2,4}
+
+42. {100}
+
+43. NO 
+
+44. constructor injection over filed injection
+
+
+45. It shows an runtime error during the excution 
+	same name of bean cannot be  accepted
+	
+	
+46. error 404  occurs because the return type name is not matched with mapping name 
+
+47. GET{
+	
+	name  = "alice"
+	phone = 7845123698
+	email = "xxxx@gmail.com"
+
+	}
+	
+	to fetch the details by email 
+	we have to cretae a getDetailsByEmail
+	
+48. Convert list to set and vice versa
+
+49. 1000 (time complexity of HashMap.get(Kry))
+
+
+
+
+50. print in this pattern
+	
+	
+	for(i = 1 ; i <= 5; i++){
+	
+		for(i =5 ; i<5; i -- ){
+		
+		System.out.println(i);
+		
+		}
+		
+
+	}
+	
+	
+51. Substrings of a String 
+		input: abc
+		output: abc,a, ab, abc, b,bc, can
+		
+		
+52. first and last entries of a TreeMap
+
+53. find the greasetKey lower than a given key () higher than a given key (Ceilng key)
+
+
+54. dispatcherServlet -- > when the client(browser) sends a request the dispatcher servlets rountes/searches the proper handler mapping for proecss the request.
+
+55. in spring for return a view 
+		for retuen view we have to create a view resolver method should be wrutten in the springConfiguration class 
+		
+		
+		public ViewReslover view(){
+		return new view("/",".jsp");
+		}
+		
+		the view will accepts the data from db and backend and it display to the jsp file.
+		
+		
+56. a.	@Configuration
+		it is used to configure with database, enity, hibernate , jsp,Javmailsender,  we use 
+	b. 	@bean propetry and this can be a userdefined method 
+	c. Dependency Injection : The 
+	d. IOC - Spring container (external entity ) --> bean factory -->application context
+		
+
+
+57. if(i=1 && i<=100){
+
+		System.out.println(i);
+		
+	}
+
+FRONT END TECH:
+		
+58. <!DOCTYPE html>
+	<html>
+	<head>
+	<title>html page with button toggle</title>
+	</head>
+	<body>
+	<form onclick="toggle()">
+	<div>
+	<label for= "name">Name: </label>
+	<input type= "text"  id="name" placeholder = "enter the name>
+	<button type = "toggle">toggle</bitton>
+	</div>
+	</form>
+	</body>
+	</html>
+	
+	js: 
+	function toggle(){
+	button toggle = document.getElementById("toggle");
+	
+	}
+	
+59. <% taglib url= "http://java.sun.core/jsp/jstl"  prefix: c %>
+	<c: var="name" >
+	<th>{$name}</th>
+	
+	

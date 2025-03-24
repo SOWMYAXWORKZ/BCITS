@@ -1,0 +1,89 @@
+SQL: 
+
+
+1. create database Employee;
+	use Employee;
+	
+	create table Employee(
+		EmpId int primary key auto_increment,
+		Name varchar(50) not null,
+		age int,
+		JoiningDate date
+	
+	);
+	
+	select * from Employee;
+	
+	Alter table Employee  where ADD COLUMN Salery decimal;
+	
+	
+2.  Drop table TempData;
+		
+		select * from TempData ; // ckecking whether table is present or not DB
+		
+		Drop table TempData;  // for drop table
+		
+		
+
+3. create database Products;
+	use Products;
+	
+	create table Products(
+		ProductId int auto_increment,
+		ProductName varchar(50),			
+		Price int
+	
+	);
+	
+	ALTER TABLE  Products ADD CONSTRAINT ProductId (int) primary key;
+	
+	ALTER TABLE Products ADD CONSTRAINT ProductName (varchar) not null;
+	
+	ALTER TABLE Products ADD CONSTRAINT Price (int) decimal;
+	
+	
+4. 
+
+
+5. create  INDEX idx_Category on Inventory; 
+
+
+6. create table Student(
+	StudentId int primary key;
+	Name varchar(50),
+	Age int,
+	Grade varchar(50)
+
+);
+	
+	INSERT INTO TABLE Student
+	values(101, 'Alice', 20, 'A');
+	
+	
+	
+7. 
+
+
+8. DELETE * from Orders ;
+
+
+9. if record exists in both tables with Same ID then
+	
+	select *  from TableA  // merge the data from TableA into TableB
+	ADD INTO TableB;
+	
+	
+	
+10. BY saving the file and copying that path and 
+	we should create a readfile and should add the file path in the service constanrs so in when we wrire a readfile logic to read the data and to display in DB 
+	
+
+12. select from Employee e  e.avg= :avg , e.min=:min, e.max=:max where e,salary=:salary;
+
+
+16. select from table Custimers where customerName= :customerName;
+	select from table Orders where orders=:orders;
+	
+	
+
+	
